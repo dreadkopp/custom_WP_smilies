@@ -41,7 +41,7 @@ class AB_Widget extends WP_Widget {
     clear: none;
     margin: 0;
     padding: 0;
-    position: relative;
+    position: static;
     text-indent: 0;
     float: left;
     display: block;
@@ -67,17 +67,21 @@ class AB_Widget extends WP_Widget {
 		}
 
 		#wp-admin-bar-user-info .avatar {
-    position: absolute;
-    left: -78px;
-    top: 10px;
+    position: relative;
+    left: -90px;
+    top: 90px;
     width: 64px;
     height: 64px;
 		}
 
+		#wp-admin-bar-user-actions {
+			margin-top: -90px!important;
+		}
+
 		#adminbar_widget .ab-top-secondary {
     display: block;
-    background-color: #777;
-    margin-bottom: 30px;
+    background-color: #555555;
+		margin-bottom: 30px;
 		}
 
 		#ab-pending-notifications::before {
@@ -92,8 +96,9 @@ class AB_Widget extends WP_Widget {
 			min-height:300px;
 			z-index: 8;
     	padding: 5px;
-    	background-color: #777;
-    	box-shadow: inset 0 0 6px 0px #000;
+    	background-color: #555555;
+
+
     }
 		<?php if (!current_user_can('delete_published_posts')) { ?>
 		#adminbar_widget .ab-top-menu {
@@ -186,6 +191,8 @@ function admin_menu_widget() {
 			<input type="hidden" value="<?php echo get_option('home');?>" name="redirect_to">
 			</div>
 		</form>
+		<a href="<?php echo wp_registration_url(); ?>"><?php echo translate("Register")?></a> | <a href="<?php echo wp_lostpassword_url( get_permalink() ); ?>" title="Lost Password"><?php echo translate("Lost Password")?></a>
+
 	</div>
 	<?php
 
