@@ -1,0 +1,24 @@
+<?php
+/*
+Plugin Name: Custom_WP_smilies
+Author: ---
+*/
+
+add_filter( 'smilies_src', 'my_custom_smilies_src', 10, 3 );
+function my_custom_smilies_src( $img_src, $img, $siteurl )
+{
+    return $siteurl.'/wp-content/plugins/Custom_WP_smilies/smilies/'.$img;
+}
+
+
+
+$wpsmiliestrans = array(
+  ':P:' => 'tongue.gif',
+  ':)' => 'smile.gif'
+  /* Add your own here*/
+  
+);
+
+apply_filters('smilies', $wpsmiliestrans);
+
+?>
